@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,7 +26,7 @@ public class UsersController {
 	}
 	
 	@PostMapping("/add")
-	public void add(User user) {
+	public void add(@RequestBody User user) {
 		if (Validators.isItEqual(user.getPassword(), user.getPassword())&&
 				Validators.isThisAnEmail(user.getEmail())) {
 			userService.add(user);

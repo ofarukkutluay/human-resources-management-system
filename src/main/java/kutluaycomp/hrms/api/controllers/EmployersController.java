@@ -17,7 +17,6 @@ public class EmployersController {
 
 	@Autowired
 	public EmployersController(EmployerService employerService) {
-		super();
 		this.employerService = employerService;
 	}
 	
