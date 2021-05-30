@@ -1,6 +1,6 @@
 package kutluaycomp.hrms.entities.concretes;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,13 +28,13 @@ public class JobSeeker {
 	private String nationalityId;
 	
 	@Column(name="date_of_birth")
-	private Date dateOfBirth;
+	private LocalDate dateOfBirth;
 	
 	@Column(name="activated")
 	private boolean activated;
 	
 	@Column(name="activation_date")
-	private Date activationDate;
+	private LocalDate activationDate;
 
 
 }

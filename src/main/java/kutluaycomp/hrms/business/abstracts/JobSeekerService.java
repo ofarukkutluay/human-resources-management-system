@@ -2,13 +2,12 @@ package kutluaycomp.hrms.business.abstracts;
 
 import java.util.List;
 
+import kutluaycomp.hrms.core.utilities.results.DataResult;
+import kutluaycomp.hrms.core.utilities.results.Result;
 import kutluaycomp.hrms.entities.concretes.JobSeeker;
 
 public interface JobSeekerService {
-	void add(JobSeeker jobSeeker);
-	void update(JobSeeker jobSeeker);
-	void delete(JobSeeker jobSeeker);
-	JobSeeker getById(int id);
-	List<JobSeeker> getAll();
+	Result add(JobSeeker jobSeeker);
+	DataResult<List<JobSeeker>> getAll();
 
 }

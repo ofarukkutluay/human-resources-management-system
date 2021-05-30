@@ -2,13 +2,12 @@ package kutluaycomp.hrms.business.abstracts;
 
 import java.util.List;
 
+import kutluaycomp.hrms.core.utilities.results.DataResult;
+import kutluaycomp.hrms.core.utilities.results.Result;
 import kutluaycomp.hrms.entities.concretes.SystemPersonnel;
 
 public interface SystemPersonnelService {
-	void add(SystemPersonnel systemPersonnel);
-	void update(SystemPersonnel systemPersonnel);
-	void delete(SystemPersonnel systemPersonnel);
-	SystemPersonnel getById(int id);
-	List<SystemPersonnel> getAll();
+	Result add(SystemPersonnel systemPersonnel);
+	DataResult<List<SystemPersonnel>> getAll();
 
 }

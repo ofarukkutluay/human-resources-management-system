@@ -1,6 +1,6 @@
 package kutluaycomp.hrms.entities.concretes;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -34,7 +34,7 @@ public class Employer {
 	private int activationSystemPersonnelId;
 	
 	@Column(name="activation_date")
-	private Date activationDate;
+	private LocalDate activationDate;
 
 
 }

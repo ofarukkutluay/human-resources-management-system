@@ -4,12 +4,10 @@ import java.util.List;
 
 import kutluaycomp.hrms.core.utilities.results.DataResult;
 import kutluaycomp.hrms.core.utilities.results.Result;
-import kutluaycomp.hrms.entities.concretes.User;
+import kutluaycomp.hrms.entities.concretes.JobPosition;
 
-public interface UserService {
-	Result add(User user);
-
-	DataResult<List<User>> getAll();
-
+public interface JobPositionService {
+	Result add(JobPosition jobPosition);
+	DataResult<List<JobPosition>> getAll();
 
 }

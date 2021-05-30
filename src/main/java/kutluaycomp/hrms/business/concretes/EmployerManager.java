@@ -6,6 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kutluaycomp.hrms.business.abstracts.EmployerService;
+import kutluaycomp.hrms.business.constants.Messages;
+import kutluaycomp.hrms.core.utilities.results.DataResult;
+import kutluaycomp.hrms.core.utilities.results.Result;
+import kutluaycomp.hrms.core.utilities.results.SuccessDataResult;
+import kutluaycomp.hrms.core.utilities.results.SuccessResult;
 import kutluaycomp.hrms.dataAccess.abstracts.EmployerDao;
 import kutluaycomp.hrms.entities.concretes.Employer;
 
@@ -20,33 +25,17 @@ public class EmployerManager implements EmployerService {
 	}
 
 	@Override
-	public void add(Employer employer) {
-		// TODO Auto-generated method stub
-		
+	public Result add(Employer employer) {
+		this.employerDao.save(employer);
+		return new SuccessResult(Messages.added("İş verenler"));
 	}
 
 	@Override
-	public void update(Employer employer) {
-		// TODO Auto-generated method stub
-		
+	public DataResult<List<Employer>> getAll() {
+		var result = this.employerDao.findAll();
+		return new SuccessDataResult<List<Employer>>(result,Messages.listed("İş verenler"));
 	}
 
-	@Override
-	public void delete(Employer employer) {
-		// TODO Auto-generated method stub
-		
-	}
 
-	@Override
-	public Employer getById(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Employer> getAll() {
-		// TODO Auto-generated method stub
-		return this.employerDao.findAll();
-	}
 
 }

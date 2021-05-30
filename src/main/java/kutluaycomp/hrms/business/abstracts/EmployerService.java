@@ -2,13 +2,12 @@ package kutluaycomp.hrms.business.abstracts;
 
 import java.util.List;
 
+import kutluaycomp.hrms.core.utilities.results.DataResult;
+import kutluaycomp.hrms.core.utilities.results.Result;
 import kutluaycomp.hrms.entities.concretes.Employer;
 
 
 public interface EmployerService {
-	void add(Employer employer);
-	void update(Employer employer);
-	void delete(Employer employer);
-	Employer getById(int id);
-	List<Employer> getAll();
+	Result add(Employer employer);
+	DataResult<List<Employer>> getAll();
 }
