@@ -23,5 +23,10 @@ public class MernisCheckManager implements PersonCheckService{
 		}
 		return dogruMu;
 	}
+	
+	@Override
+	public boolean fakeCheckIfRealPerson(JobSeeker jobSeeker) {
+		return true;
+	}
 
 }
