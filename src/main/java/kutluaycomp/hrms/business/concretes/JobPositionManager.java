@@ -36,4 +36,10 @@ public class JobPositionManager implements JobPositionService {
 		return new SuccessDataResult<List<JobPosition>>(result, Messages.listed("İş Posizyonları"));
 	}
 
+	@Override
+	public DataResult<JobPosition> getById(int id) {
+		var result = this.jobPositionDao.findById(id).get();
+		return new SuccessDataResult<JobPosition>(result,Messages.listed);
+	}
+
 }

@@ -9,5 +9,6 @@ import kutluaycomp.hrms.entities.concretes.JobPosition;
 public interface JobPositionService {
 	Result add(JobPosition jobPosition);
 	DataResult<List<JobPosition>> getAll();
+	DataResult<JobPosition> getById(int id);
 
 }
