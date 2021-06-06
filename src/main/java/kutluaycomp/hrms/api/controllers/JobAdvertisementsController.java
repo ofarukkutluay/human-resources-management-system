@@ -48,8 +48,8 @@ public class JobAdvertisementsController {
 	}
 	
 	@GetMapping("/getBayDateRange")
-	public DataResult<List<JobAdvertisement>> getByDateRange(@RequestBody LocalDate startDate, LocalDate finalDate,
-			boolean activated) {
+	public DataResult<List<JobAdvertisement>> getByDateRange(@RequestBody LocalDate startDate, @RequestBody LocalDate finalDate,
+			@RequestBody boolean activated) {
 		return this.jobAdvertisementService.getByDateRange(startDate, finalDate, activated);
 	}
 	
