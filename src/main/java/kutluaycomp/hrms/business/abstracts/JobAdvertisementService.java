@@ -1,6 +1,5 @@
 package kutluaycomp.hrms.business.abstracts;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import kutluaycomp.hrms.core.utilities.results.DataResult;
@@ -14,5 +13,6 @@ public interface JobAdvertisementService {
 	DataResult<JobAdvertisement> getById(int id);
 	DataResult<List<JobAdvertisement>> getByEmployerId(int id);
 	DataResult<List<JobAdvertisement>> getActivated();
-	DataResult<List<JobAdvertisement>> getByDateRange(LocalDate startDate,LocalDate finalDate,boolean activated);
+	DataResult<List<JobAdvertisement>> getByDateRange(String startDate, String finalDate,
+			boolean activated);
 }

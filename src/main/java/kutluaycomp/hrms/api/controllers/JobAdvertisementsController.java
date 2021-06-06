@@ -1,6 +1,5 @@
 package kutluaycomp.hrms.api.controllers;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,8 +47,8 @@ public class JobAdvertisementsController {
 	}
 	
 	@GetMapping("/getBayDateRange")
-	public DataResult<List<JobAdvertisement>> getByDateRange(@RequestBody LocalDate startDate, @RequestBody LocalDate finalDate,
-			@RequestBody boolean activated) {
+	public DataResult<List<JobAdvertisement>> getByDateRange(@RequestParam String startDate, @RequestParam String finalDate,
+			@RequestParam boolean activated) {
 		return this.jobAdvertisementService.getByDateRange(startDate, finalDate, activated);
 	}
 	

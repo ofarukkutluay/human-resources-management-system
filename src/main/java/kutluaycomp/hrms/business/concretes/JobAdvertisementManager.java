@@ -57,9 +57,11 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 	}
 
 	@Override
-	public DataResult<List<JobAdvertisement>> getByDateRange(LocalDate startDate, LocalDate finalDate,
+	public DataResult<List<JobAdvertisement>> getByDateRange(String startDate, String finalDate,
 			boolean activated) {
-		var result = this.jobAdvertisementDao.getByCreationDateBetweenAndActivated(startDate, finalDate, activated);
+		LocalDate startDate1 = LocalDate.parse(startDate);
+		LocalDate finalDate1 = LocalDate.parse(finalDate);
+		var result = this.jobAdvertisementDao.getByCreationDateBetweenAndActivated(startDate1, finalDate1, activated);
 		return new SuccessDataResult<List<JobAdvertisement>>(result,Messages.listed);
 	}
 
