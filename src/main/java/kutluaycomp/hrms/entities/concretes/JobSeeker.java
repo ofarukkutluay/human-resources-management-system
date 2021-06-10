@@ -1,6 +1,7 @@
 package kutluaycomp.hrms.entities.concretes;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -8,6 +9,7 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
@@ -50,5 +52,8 @@ public class JobSeeker extends User {
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	private LocalDate activationDate;
 
+	@JsonIgnore
+	@OneToMany(mappedBy = "jobSeeker")
+	private List<JobSeekerSchool> jobSeekerSchools;
 
 }
