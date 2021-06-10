@@ -4,6 +4,13 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "curriculum_vitaes")
 public class CurriculumVitae {
@@ -12,19 +19,32 @@ public class CurriculumVitae {
 	@Column(name="id")
 	private int id;
 	
-	@Column(name="job_seeker_id")
-	private int jobSeekerId;
+	@ManyToOne
+	@JoinColumn(name="job_seeker_id", referencedColumnName = "user_id")
+	private JobSeeker jobSeeker;
 
-	@OneToMany
-	@JoinColumn(name="job_seeker_school_id",referencedColumnName = "job_seeker_id")
+	@OneToMany(mappedBy = "curriculumVitae")
 	private List<JobSeekerSchool> jobSeekerSchools;
 
-	private int[] jobSeekerExperienceIds;
-	private int[] foreignLanguageIds;
+	@OneToMany(mappedBy = "curriculumVitae")
+	private List<JobSeekerExperience> JobSeekerExperiences;
+	
+	@OneToMany(mappedBy = "curriculumVitae")
+	private List<JobSeekerForegionLanguage> jobSeekerForeignLanguages;
+	
+	@Column(name="image_url")
 	private String imageUrl;
+	
+	@Column(name="github_url")
 	private String githubUrl;
+	
+	@Column(name="linkedin_url")
 	private String linkedinUrl;
-	private int[] programmingLanguageIds;
+	
+	@OneToMany(mappedBy = "curriculumVitae")
+	private List<JobSeekerProgrammingLanguage> jobSeekerProgramminLanguages;
+	
+	@Column(name="foreword")
 	private String foreword;
 
 }
