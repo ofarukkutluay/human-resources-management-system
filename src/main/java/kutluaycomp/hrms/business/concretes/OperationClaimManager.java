@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import kutluaycomp.hrms.business.abstracts.OperationClaimService;
 import kutluaycomp.hrms.core.utilities.results.DataResult;
 import kutluaycomp.hrms.core.utilities.results.Result;
+import kutluaycomp.hrms.core.utilities.results.SuccessDataResult;
+import kutluaycomp.hrms.core.utilities.results.SuccessResult;
 import kutluaycomp.hrms.dataAccess.abstracts.OperationClaimDao;
 import kutluaycomp.hrms.entities.concretes.OperationClaim;
 
@@ -24,20 +26,20 @@ public class OperationClaimManager implements OperationClaimService {
 
 	@Override
 	public Result add(OperationClaim operationClaim) {
-		// TODO Auto-generated method stub
-		return null;
+		this.operationClaimDao.save(operationClaim);
+		return new SuccessResult();
 	}
 
 	@Override
 	public DataResult<List<OperationClaim>> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		var result = this.operationClaimDao.findAll();
+		return new SuccessDataResult<List<OperationClaim>>(result);
 	}
 
 	@Override
 	public DataResult<OperationClaim> getById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		var result = this.operationClaimDao.findById(id).get();
+		return new SuccessDataResult<OperationClaim>(result);
 	}
 
 

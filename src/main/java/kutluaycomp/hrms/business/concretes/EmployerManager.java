@@ -7,12 +7,12 @@ import org.springframework.stereotype.Service;
 
 import kutluaycomp.hrms.business.abstracts.EmployerService;
 import kutluaycomp.hrms.business.constants.Messages;
-import kutluaycomp.hrms.core.utilities.CustomValidators;
 import kutluaycomp.hrms.core.utilities.results.DataResult;
 import kutluaycomp.hrms.core.utilities.results.ErrorResult;
 import kutluaycomp.hrms.core.utilities.results.Result;
 import kutluaycomp.hrms.core.utilities.results.SuccessDataResult;
 import kutluaycomp.hrms.core.utilities.results.SuccessResult;
+import kutluaycomp.hrms.core.utilities.validations.CustomValidators;
 import kutluaycomp.hrms.dataAccess.abstracts.EmployerDao;
 import kutluaycomp.hrms.entities.concretes.Employer;
 

@@ -26,6 +26,8 @@ public class CurriculumVitaeManager implements CurriculumVitaeService {
 
 	@Override
 	public Result add(CurriculumVitae curriculumVitae) {
+		
+		
 		this.curriculumVitaeDao.save(curriculumVitae);
 		return new SuccessResult();
 	}

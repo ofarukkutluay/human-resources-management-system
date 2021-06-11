@@ -1,4 +1,4 @@
-package kutluaycomp.hrms.core.utilities;
+package kutluaycomp.hrms.core.utilities.validations;
 
 import java.util.regex.Pattern;
 
