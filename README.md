@@ -6,6 +6,7 @@
 
 #### Yapılanlar;
 * CurriculumVitae nesnesi oluşturuldu ve istenilen aday bilgileri içina ayrı ayrı nesneler oluştururularak code first tekniği ile datebase şekillendirildi.
+* Cloudinary entegre edildi.
 
 
 #### Ödev içeriği;
