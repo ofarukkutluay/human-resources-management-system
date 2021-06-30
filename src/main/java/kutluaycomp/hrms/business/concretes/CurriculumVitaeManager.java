@@ -45,9 +45,9 @@ public class CurriculumVitaeManager implements CurriculumVitaeService {
 	}
 
 	@Override
-	public DataResult<List<CurriculumVitae>> getById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public DataResult<CurriculumVitae> getById(int id) {
+		var result = this.curriculumVitaeDao.findById(id).get();
+		return new SuccessDataResult<CurriculumVitae>(result);
 	}
 
 	@Override

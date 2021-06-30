@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -73,6 +74,14 @@ public class JobAdvertisement {
 	private boolean activated;
 	
 	@ManyToOne()
+	@JoinColumn(name = "activation_system_personnel_id", referencedColumnName = "user_id")
+	private SystemPersonnel systemPersonnel;
+
+	@Column(name = "activation_date")
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+	private LocalDate activationDate;
+	
+	@ManyToOne()
 	@JoinColumn(name="employer_id", referencedColumnName = "user_id")
 	private Employer employer;
 
@@ -83,5 +92,13 @@ public class JobAdvertisement {
 	@ManyToOne()
 	@JoinColumn(name = "cities_id", referencedColumnName = "id")
 	private City city;
+	
+	@ManyToOne()
+	@JoinColumn(name = "way_of_working_id", referencedColumnName = "id")
+	private WayOfWorking wayOfWorking;
+	
+	@ManyToOne()
+	@JoinColumn(name = "working_time_id", referencedColumnName = "id")
+	private WorkingTime workingTime;
 
 }

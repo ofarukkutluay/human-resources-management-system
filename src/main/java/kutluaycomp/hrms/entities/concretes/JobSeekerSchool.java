@@ -10,6 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,6 +27,7 @@ public class JobSeekerSchool {
 	@Column(name="id")
 	private int id;
 	
+	@JsonIgnore()
 	@ManyToOne()
 	@JoinColumn(name = "curriculum_vitae_id", referencedColumnName = "id")
 	private CurriculumVitae curriculumVitae;

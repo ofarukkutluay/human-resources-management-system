@@ -29,13 +29,13 @@ public class CloudinaryFileManager implements ImageService {
     @Override
     public String upload(MultipartFile file) {
         Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap(
-                "cloud_name", cloudName,
-                "api_key", apiKey,
-                "api_secret", apiSecret));
+                "cloud_name", "dcbu4ndq8",
+                "api_key", "753324867845275",
+                "api_secret", "X7_iPSjWaph7pohd2dKck_M_vew"));
 
         try {
             File uploadedFile = convertMultiPartToFile(file);
-            Map<?, ?> uploadResult = cloudinary.uploader().upload(uploadedFile, ObjectUtils.emptyMap());
+            Map uploadResult = cloudinary.uploader().upload(uploadedFile, ObjectUtils.emptyMap());
             return uploadResult.get("url").toString();
         } catch (Exception e) {
             throw new RuntimeException(e);

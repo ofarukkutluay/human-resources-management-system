@@ -5,6 +5,8 @@ import java.util.List;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.*;
 
 @Data
@@ -22,6 +24,7 @@ public class ProgrammingLanguage {
 	@Column(name="name")
 	private String name;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "programmingLanguage")
 	private List<JobSeekerProgrammingLanguage> jobSeekerProgramminLanguages;
 }

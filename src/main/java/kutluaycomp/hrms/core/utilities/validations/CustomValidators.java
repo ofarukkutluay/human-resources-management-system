@@ -10,7 +10,7 @@ public class CustomValidators {
 		String[] websiteArray = website.split(".");
 		
 		String websiteDomain;
-		if (websiteArray[0].contains("www")) {
+		if (websiteArray[0].contains("w")) {
 			websiteDomain = websiteArray[1];
 			System.out.println(websiteDomain);
 		} else {

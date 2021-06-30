@@ -1,6 +1,5 @@
 package kutluaycomp.hrms.entities.concretes;
 
-
 import java.util.List;
 
 import javax.persistence.Column;
@@ -22,8 +21,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="foreign_languages")
-public class ForeignLanguage {
+@Table(name="working_times")
+public class WorkingTime {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
@@ -34,7 +34,6 @@ public class ForeignLanguage {
 	private String name;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "foreignLanguage")
-	private List<JobSeekerForegionLanguage> jobSeekerForegionLanguages;
-
+	@OneToMany(mappedBy = "workingTime")
+	private List<JobAdvertisement> jobAdvertisements;
 }

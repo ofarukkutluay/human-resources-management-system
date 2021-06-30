@@ -2,6 +2,8 @@ package kutluaycomp.hrms.entities.concretes;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.*;
 
 @Data
@@ -15,6 +17,7 @@ public class JobSeekerProgrammingLanguage {
 	@Column(name="id")
 	private int id;
 	
+	@JsonIgnore()
 	@ManyToOne()
 	@JoinColumn(name = "curriculum_vitae_id", referencedColumnName = "id")
 	private CurriculumVitae curriculumVitae;

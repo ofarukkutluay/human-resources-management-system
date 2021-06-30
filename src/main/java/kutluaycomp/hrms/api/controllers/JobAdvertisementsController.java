@@ -3,6 +3,7 @@ package kutluaycomp.hrms.api.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,6 +16,7 @@ import kutluaycomp.hrms.core.utilities.results.DataResult;
 import kutluaycomp.hrms.core.utilities.results.Result;
 import kutluaycomp.hrms.entities.concretes.JobAdvertisement;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/jobadvertisements")
 public class JobAdvertisementsController {

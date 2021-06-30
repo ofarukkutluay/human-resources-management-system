@@ -1,5 +1,6 @@
 package kutluaycomp.hrms.business.concretes;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import kutluaycomp.hrms.core.utilities.results.SuccessResult;
 import kutluaycomp.hrms.core.utilities.validations.CustomValidators;
 import kutluaycomp.hrms.dataAccess.abstracts.EmployerDao;
 import kutluaycomp.hrms.entities.concretes.Employer;
+import kutluaycomp.hrms.entities.concretes.SystemPersonnel;
 
 @Service
 public class EmployerManager implements EmployerService {
@@ -43,6 +45,23 @@ public class EmployerManager implements EmployerService {
 	public DataResult<List<Employer>> getAll() {
 		var result = this.employerDao.findAll();
 		return new SuccessDataResult<List<Employer>>(result, Messages.listed("İş verenler"));
+	}
+
+	@Override
+	public DataResult<Employer> getById(int id) {
+		var result = this.employerDao.getOne(id);
+		return new SuccessDataResult<Employer>(result);
+	}
+
+	@Override
+	public Result employerActivate(int employerId,SystemPersonnel systemPersonnel) {
+		var employer = this.employerDao.findById(employerId).get();
+		employer.setActivated(true);
+		employer.setSystemPersonnel(systemPersonnel);
+		employer.setActivationDate(LocalDate.now());
+		this.employerDao.save(employer);
+		
+		return new SuccessResult("Firma aktif edildi");
 	}
 
 }

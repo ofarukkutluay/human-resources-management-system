@@ -3,6 +3,7 @@ package kutluaycomp.hrms.api.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,6 +18,7 @@ import kutluaycomp.hrms.core.utilities.results.DataResult;
 import kutluaycomp.hrms.core.utilities.results.Result;
 import kutluaycomp.hrms.entities.concretes.CurriculumVitae;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/curriculumvitaes")
 public class CurriculumVitaesController {
@@ -29,12 +31,19 @@ public class CurriculumVitaesController {
 		this.curriculumVitaeService = curriculumVitaeService;
 	}
 	
-	@PostMapping("/add")
-	public Result add(@RequestBody CurriculumVitae curriculumVitae, @RequestParam("image") MultipartFile multipartFile ) {
-		
+	@PostMapping("/uploadImage")
+	public Result uploadImage(@RequestParam("image") MultipartFile multipartFile , @RequestParam("cv_id") int id) {
 		CloudinaryFileManager cloudinaryFileManager = new CloudinaryFileManager();
 		var result = cloudinaryFileManager.upload(multipartFile);
-		curriculumVitae.setImageUrl(result);
+		CurriculumVitae cv =  this.curriculumVitaeService.getById(id).getData();
+		cv.setImageUrl(result);
+		return this.curriculumVitaeService.add(cv);
+		
+	}
+	
+	@PostMapping("/add")
+	public Result add(@RequestBody CurriculumVitae curriculumVitae) {
+		
 		return this.curriculumVitaeService.add(curriculumVitae);
 	}
 	

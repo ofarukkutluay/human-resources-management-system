@@ -4,6 +4,9 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,6 +16,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name = "curriculum_vitaes")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class CurriculumVitae {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,11 +27,14 @@ public class CurriculumVitae {
 	@JoinColumn(name="job_seeker_id", referencedColumnName = "user_id")
 	private JobSeeker jobSeeker;
 
+	
 	@OneToMany(mappedBy = "curriculumVitae")
 	private List<JobSeekerSchool> jobSeekerSchools;
 
+	
 	@OneToMany(mappedBy = "curriculumVitae")
-	private List<JobSeekerExperience> JobSeekerExperiences;
+	private List<JobSeekerExperience> jobSeekerExperiences;
+	
 	
 	@OneToMany(mappedBy = "curriculumVitae")
 	private List<JobSeekerForegionLanguage> jobSeekerForeignLanguages;
@@ -41,8 +48,9 @@ public class CurriculumVitae {
 	@Column(name="linkedin_url")
 	private String linkedinUrl;
 	
+	
 	@OneToMany(mappedBy = "curriculumVitae")
-	private List<JobSeekerProgrammingLanguage> jobSeekerProgramminLanguages;
+	private List<JobSeekerProgrammingLanguage> jobSeekerProgrammingLanguages;
 	
 	@Column(name="foreword")
 	private String foreword;

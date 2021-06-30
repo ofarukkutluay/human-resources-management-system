@@ -1,8 +1,12 @@
 package kutluaycomp.hrms.entities.concretes;
 
+import java.util.List;
+
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,5 +26,13 @@ public class SystemPersonnel extends User{
 	@ManyToOne()
     @JoinColumn(name = "operation_claim_id", referencedColumnName = "id")
     private OperationClaim operationClaim;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "systemPersonnel")
+	private List<Employer> employers;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "systemPersonnel")
+	private List<JobAdvertisement> jobAdvertisements;
 
 }

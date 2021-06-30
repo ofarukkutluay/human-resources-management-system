@@ -9,5 +9,5 @@ import kutluaycomp.hrms.entities.concretes.SystemPersonnel;
 public interface SystemPersonnelService {
 	Result add(SystemPersonnel systemPersonnel);
 	DataResult<List<SystemPersonnel>> getAll();
-
+	
 }

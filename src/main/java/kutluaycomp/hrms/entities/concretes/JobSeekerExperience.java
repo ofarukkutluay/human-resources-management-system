@@ -14,6 +14,8 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,6 +31,7 @@ public class JobSeekerExperience {
 	@Column(name="id")
 	private int id;
 	
+	@JsonIgnore()
 	@ManyToOne()
 	@JoinColumn(name = "curriculum_vitae_id", referencedColumnName = "id")
 	private CurriculumVitae curriculumVitae;

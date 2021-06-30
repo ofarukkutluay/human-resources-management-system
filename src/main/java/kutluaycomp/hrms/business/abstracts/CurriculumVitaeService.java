@@ -10,6 +10,6 @@ public interface CurriculumVitaeService {
 	Result add(CurriculumVitae curriculumVitae);
 	Result update(CurriculumVitae curriculumVitae);
 	DataResult<List<CurriculumVitae>> getAll();
-	DataResult<List<CurriculumVitae>> getById(int id);
+	DataResult<CurriculumVitae> getById(int id);
 	DataResult<List<CurriculumVitae>> getByJobSeekerId(int jobSeekerId);
 }

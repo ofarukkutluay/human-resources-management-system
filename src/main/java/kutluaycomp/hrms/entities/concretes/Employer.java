@@ -43,8 +43,9 @@ public class Employer extends User {
 	@Column(name = "activated")
 	private boolean activated;
 
-	@Column(name = "activation_system_personnel_id")
-	private int activationSystemPersonnelId;
+	@ManyToOne()
+	@JoinColumn(name = "activation_system_personnel_id", referencedColumnName = "user_id")
+	private SystemPersonnel systemPersonnel;
 
 	@Column(name = "activation_date")
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
