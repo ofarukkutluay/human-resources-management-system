@@ -43,9 +43,14 @@ public class JobAdvertisementsController {
 		return this.jobAdvertisementService.getByEmployerId(id);
 	}
 	
-	@GetMapping("/getactivated")
-	public DataResult<List<JobAdvertisement>> getActivated() {
-		return this.jobAdvertisementService.getActivated();
+	@GetMapping("/getbyactivatedtrue")
+	public DataResult<List<JobAdvertisement>> getByActivatedTrue() {
+		return this.jobAdvertisementService.getByActivatedTrue();
+	}
+	
+	@GetMapping("/getbyactivatedfalse")
+	public DataResult<List<JobAdvertisement>> getByActivatedFalse() {
+		return this.jobAdvertisementService.getByActivatedFalse();
 	}
 	
 	@GetMapping("/getBayDateRange")
@@ -57,6 +62,11 @@ public class JobAdvertisementsController {
 	@PostMapping("/add")
 	public Result add(@RequestBody JobAdvertisement jobAdvertisement) {
 		return this.jobAdvertisementService.add(jobAdvertisement);
+	}
+	
+	@PostMapping("/activateJobAdvertisment")
+	public Result activateJobAdvertisment(@RequestParam int systemPersonnelId,@RequestParam int jobAdvertisementId) {
+		return this.jobAdvertisementService.activateJobAdvertisment(systemPersonnelId, jobAdvertisementId);
 	}
 
 }

@@ -14,7 +14,7 @@ import kutluaycomp.hrms.entities.concretes.ForeignLanguage;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api/foreignLanguages")
+@RequestMapping("/api/foreignlanguages")
 public class ForeignLanguagesController {
 	private ForeignLanguageService foreignLanguageService;
 

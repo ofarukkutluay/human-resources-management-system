@@ -16,7 +16,6 @@ import kutluaycomp.hrms.business.abstracts.EmployerService;
 import kutluaycomp.hrms.core.utilities.results.DataResult;
 import kutluaycomp.hrms.core.utilities.results.Result;
 import kutluaycomp.hrms.entities.concretes.Employer;
-import kutluaycomp.hrms.entities.concretes.SystemPersonnel;
 
 @CrossOrigin
 @RestController
@@ -40,8 +39,18 @@ public class EmployersController {
 	}
 	
 	@PostMapping("/employerActivate")
-	public Result employerActivate(@RequestParam int employerId,@RequestBody SystemPersonnel systemPersonnel) {
-		return this.employerService.employerActivate(employerId,systemPersonnel);
+	public Result employerActivate(@RequestParam int systemPersonnelId,@RequestParam int employerId) {
+		return this.employerService.employerActivate(systemPersonnelId,employerId);
+	}
+	
+	@GetMapping("/getbyactivatedtrue")
+	public DataResult<List<Employer>> getByActivatedTrue(){
+		return this.employerService.getByActivatedTrue();
+	}
+	
+	@GetMapping("/getbyactivatedfalse")
+	public DataResult<List<Employer>> getByActivatedFalse(){
+		return this.employerService.getByActivatedFalse();
 	}
 	
 }

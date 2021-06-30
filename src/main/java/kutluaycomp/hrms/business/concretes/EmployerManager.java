@@ -54,14 +54,28 @@ public class EmployerManager implements EmployerService {
 	}
 
 	@Override
-	public Result employerActivate(int employerId,SystemPersonnel systemPersonnel) {
+	public Result employerActivate(int systemPersonnelId,int employerId) {
 		var employer = this.employerDao.findById(employerId).get();
+		SystemPersonnel systemPersonnel = new SystemPersonnel();
+		systemPersonnel.setId(systemPersonnelId);
 		employer.setActivated(true);
 		employer.setSystemPersonnel(systemPersonnel);
 		employer.setActivationDate(LocalDate.now());
 		this.employerDao.save(employer);
 		
 		return new SuccessResult("Firma aktif edildi");
+	}
+
+	@Override
+	public DataResult<List<Employer>> getByActivatedTrue() {
+		var result = this.employerDao.getByActivatedTrue();
+		return new SuccessDataResult<List<Employer>>(result, Messages.listed("Aktif firmalar"));
+	}
+
+	@Override
+	public DataResult<List<Employer>> getByActivatedFalse() {
+		var result = this.employerDao.getByActivatedFalse();
+		return new SuccessDataResult<List<Employer>>(result, Messages.listed("Pasif firmalar"));
 	}
 
 }
